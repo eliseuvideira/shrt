@@ -19,7 +19,7 @@ router.post("/u", body(urlsPostOneBody), urlsPostOne);
 /**
  * GET /u/{urlId}
  * @tag urls
- * @pathParam {integer} urlId
+ * @pathParam {string} urlId
  * @response 307
  * @response default
  * @responseContent {Error} default.application/json

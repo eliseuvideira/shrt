@@ -16,6 +16,7 @@ server({
   port: PORT,
   before: async () => {
     await mongoose.connect(process.env.MONGODB_URI || "", {
+      useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       dbName: "shrt",
