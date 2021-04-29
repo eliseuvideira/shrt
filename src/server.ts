@@ -6,6 +6,7 @@ dotenv({}, ({ NODE_ENV, npm_package_version }) => {
 });
 
 import server from "@ev-fns/server";
+import mongoose from "mongoose";
 import app from "./app";
 
 const PORT = +(process.env.PORT || 0) || 3000;
@@ -13,6 +14,13 @@ const PORT = +(process.env.PORT || 0) || 3000;
 server({
   app,
   port: PORT,
+  before: async () => {
+    await mongoose.connect(process.env.MONGODB_URI || "", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: "shrt",
+    });
+  },
   after: async () => {
     console.info(`http://localhost:${PORT}`);
   },
