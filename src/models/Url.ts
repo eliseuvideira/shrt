@@ -1,5 +1,4 @@
-import { createModel } from "../functions/createModel";
-import { createSchema } from "../functions/createSchema";
+import { createModel, createSchema } from "@ev-fns/mongo";
 
 interface UrlProps {
   urlId: string;

@@ -1,4 +1,5 @@
 import dotenv from "@ev-fns/dotenv";
+import { connect } from "@ev-fns/mongo";
 
 dotenv({}, ({ NODE_ENV, npm_package_version }) => {
   console.info(NODE_ENV);
@@ -9,18 +10,19 @@ import server from "@ev-fns/server";
 import mongoose from "mongoose";
 import app from "./app";
 
-const PORT = +(process.env.PORT || 0) || 3000;
+const PORT = +process.env.PORT || 3000;
 
 server({
   app,
   port: PORT,
   before: async () => {
-    await mongoose.connect(process.env.MONGODB_URI || "", {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: true,
-      dbName: "shrt",
+    connect(mongoose, {
+      protocol: process.env.MONGODB_PROTOCOL,
+      server: process.env.MONGODB_SERVER,
+      port: +process.env.MONGODB_PORT,
+      user: process.env.MONGODB_USER,
+      pass: process.env.MONGODB_PASSWORD,
+      database: process.env.MONGODB_DATABASE,
     });
   },
   after: async () => {

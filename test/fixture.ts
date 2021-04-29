@@ -1,19 +1,22 @@
 import mongoose from "mongoose";
 import dotenv from "@ev-fns/dotenv";
+import { connect } from "@ev-fns/mongo";
 
 dotenv();
 
 const setup = async () => {
-  await mongoose.connect(process.env.MONGODB_URI || "", {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: true,
-    dbName: "shrt_test",
-  });
+  await connect(mongoose, {
+    protocol: process.env.MONGODB_PROTOCOL,
+    server: process.env.MONGODB_SERVER,
+    port: +process.env.MONGODB_PORT,
+    user: process.env.MONGODB_USER,
+    pass: process.env.MONGODB_PASSWORD,
+    database: process.env.MONGODB_DATABASE + "_test",
+  } as any);
 };
 
 const teardown = async () => {
+  await mongoose.connection.dropDatabase();
   await mongoose.disconnect();
 };
 
