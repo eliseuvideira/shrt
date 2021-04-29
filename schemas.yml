@@ -1,9 +1,4 @@
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-
   schemas:
     Error:
       type: object
@@ -14,42 +9,18 @@ components:
       required:
         - message
 
-    Book:
+    UrlPostOneResponseBody:
       type: object
       properties:
-        bookId:
-          type: integer
-          example: 1
-        title:
+        urlId:
           type: string
-          example: Moby-Dick
-        author:
-          type: string
-          example: Herman Melville
-      required:
-        - bookId
-        - title
-        - author
+          example: 6bT5GWObkkx7McLD4vgXI
 
-    BookPostOne:
+    UrlPostOneRequestBody:
       type: object
       properties:
-        title:
+        url:
           type: string
-          example: Moby-Dick
-        author:
-          type: string
-          example: Herman Melville
+          example: https://www.youtube.com
       required:
-        - title
-        - author
-
-    BookPatchOne:
-      type: object
-      properties:
-        title:
-          type: string
-          example: Moby-Dick
-        author:
-          type: string
-          example: Herman Melville
+        - url
