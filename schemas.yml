@@ -9,14 +9,7 @@ components:
       required:
         - message
 
-    UrlPostOneResponseBody:
-      type: object
-      properties:
-        urlId:
-          type: string
-          example: 6bT5GWObkkx7McLD4vgXI
-
-    UrlPostOneRequestBody:
+    UrlPostOneBody:
       type: object
       properties:
         url:

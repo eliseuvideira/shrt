@@ -8,9 +8,9 @@ const router = Router();
 /**
  * POST /u
  * @tag urls
- * @bodyContent {UrlPostOneRequestBody} application/json
+ * @bodyContent {UrlPostOneBody} application/json
  * @response 201
- * @responseContent {UrlPostOneResponseBody} 201.application/json
+ * @responseContent {UrlPostOneBody} 201.application/json
  * @response default
  * @responseContent {Error} default.application/json
  */

@@ -15,7 +15,10 @@ export const urlsPostOne = endpoint(async (req, res) => {
     redirected: false,
   });
 
-  res.status(201).json({ urlId });
+  const url = new URL(process.env.API_URL || "");
+  url.pathname = `/u/${urlId}`;
+
+  res.status(201).json({ url: url.toString() });
 });
 
 export const urlsGetOne = endpoint(async (req, res) => {
