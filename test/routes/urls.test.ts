@@ -2,7 +2,7 @@ import "../fixture";
 
 import { request } from "../request";
 
-const SIMULTANEOUS_REQUESTS = 100;
+const SIMULTANEOUS_REQUESTS = 20;
 
 describe("urls", () => {
   it("works concurrently", async () => {
@@ -11,7 +11,7 @@ describe("urls", () => {
     const urls = [];
     for (let i = 0; i < 10; i += 1) {
       const response = await request()
-        .post("/u")
+        .post("/")
         .send({ url: "https://www.youtube.com" });
 
       expect(response.status).toBe(201);

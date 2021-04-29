@@ -6,7 +6,7 @@ import { urlsPostOneBody, urlsGetOneParams } from "../validations/urls";
 const router = Router();
 
 /**
- * POST /u
+ * POST /
  * @tag urls
  * @bodyContent {UrlPostOneBody} application/json
  * @response 201
@@ -14,16 +14,16 @@ const router = Router();
  * @response default
  * @responseContent {Error} default.application/json
  */
-router.post("/u", body(urlsPostOneBody), urlsPostOne);
+router.post("/", body(urlsPostOneBody), urlsPostOne);
 
 /**
- * GET /u/{urlId}
+ * GET /{urlId}
  * @tag urls
  * @pathParam {string} urlId
  * @response 307
  * @response default
  * @responseContent {Error} default.application/json
  */
-router.get("/u/:urlId", params(urlsGetOneParams), urlsGetOne);
+router.get("/:urlId", params(urlsGetOneParams), urlsGetOne);
 
 export default router;

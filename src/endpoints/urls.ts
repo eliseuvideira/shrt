@@ -1,12 +1,11 @@
 import { endpoint } from "@ev-fns/endpoint";
-import { HttpError } from "@ev-fns/errors";
 import { nanoid } from "nanoid";
 import { Url } from "../models/Url";
 
 export const urlsPostOne = endpoint(async (req, res) => {
   const { url: urlStr } = req.body;
 
-  const urlId = nanoid();
+  const urlId = nanoid(10);
 
   await Url.create({
     urlId,
@@ -16,7 +15,7 @@ export const urlsPostOne = endpoint(async (req, res) => {
   });
 
   const url = new URL(process.env.API_URL || "");
-  url.pathname = `/u/${urlId}`;
+  url.pathname = `/${urlId}`;
 
   res.status(201).json({ url: url.toString() });
 });
@@ -37,8 +36,8 @@ export const urlsGetOne = endpoint(async (req, res) => {
   url = await Url.findOneAndUpdate({ urlId }, { $inc: { requests: 1 } });
 
   if (url) {
-    throw new HttpError(410, "Gone");
+    return res.status(410).render("pages/gone", { requests: url.requests });
   }
 
-  throw new HttpError(404, "Not Found");
+  return res.status(404).render("pages/not-found");
 });
