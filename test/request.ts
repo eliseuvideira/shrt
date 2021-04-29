@@ -1,4 +1,5 @@
-import supertest from 'supertest';
-import app from '../src/app';
+import supertest from "supertest";
+import app from "../src/app";
 
-export const request = () => supertest(app);
+const _request = supertest(app);
+export const request = () => _request;

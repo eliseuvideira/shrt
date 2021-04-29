@@ -31,7 +31,7 @@ export const urlsGetOne = endpoint(async (req, res) => {
 
   if (url) {
     await Url.findOneAndUpdate({ urlId }, { $unset: { url: 1 } });
-    return res.status(307).redirect(url.url || "");
+    return res.redirect(307, url.url || "");
   }
 
   url = await Url.findOneAndUpdate({ urlId }, { $inc: { requests: 1 } });
