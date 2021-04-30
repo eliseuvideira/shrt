@@ -2,7 +2,7 @@ import "../fixture";
 
 import { request } from "../request";
 
-const SIMULTANEOUS_REQUESTS = 20;
+const SIMULTANEOUS_REQUESTS = 10;
 
 describe("urls", () => {
   it("works concurrently", async () => {

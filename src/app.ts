@@ -9,9 +9,12 @@ import { notFound, exception } from "@ev-fns/errors";
 import path from "path";
 import ejs from "ejs";
 import { minify } from "html-minifier";
+import rateLimit from "express-rate-limit";
+import slowDown from "express-slow-down";
 
 const app = express();
 
+app.set("trust proxy", 1);
 app.set("view engine", "ejs");
 app.engine("ejs", (filePath, options, callback) =>
   (ejs as any).__express(filePath, options, (err: any, html: any) => {
@@ -34,6 +37,8 @@ app.use(cors());
 app.use(json());
 app.use(morgan("combined", { skip: () => process.env.NODE_ENV === "test" }));
 app.use(openapi({ apiName: process.env.API_NAME || "", redirect: false }));
+app.use(slowDown({ windowMs: 15 * 60 * 1000, delayAfter: 100, delayMs: 500 }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 200 }));
 
 app.get("/", (req, res) => res.render("pages/index.ejs"));
 app.use("/public/", express.static(path.join(__dirname, "..", "public")));
