@@ -7,10 +7,28 @@ import morgan from "morgan";
 import openapi from "@ev-fns/openapi";
 import { notFound, exception } from "@ev-fns/errors";
 import path from "path";
+import ejs from "ejs";
+import { minify } from "html-minifier";
 
 const app = express();
 
 app.set("view engine", "ejs");
+app.engine("ejs", (filePath, options, callback) =>
+  (ejs as any).__express(filePath, options, (err: any, html: any) => {
+    if (err) {
+      return callback(err);
+    }
+    return callback(
+      null,
+      minify(html, {
+        removeComments: true,
+        minifyCSS: true,
+        collapseInlineTagWhitespace: true,
+        collapseWhitespace: true,
+      }),
+    );
+  }),
+);
 
 app.use(cors());
 app.use(json());

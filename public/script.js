@@ -1,8 +1,10 @@
 /* eslint-disable */
 window.addEventListener("load", () => {
+  new ClipboardJS(".btn");
+
   const form = document.querySelector("form");
   const input = document.querySelector("#url");
-  const short = document.querySelector("#short");
+  const short = document.querySelector("#short input");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -18,6 +20,6 @@ window.addEventListener("load", () => {
 
     const data = await response.json();
 
-    short.textContent = data.url;
+    short.value = data.url;
   });
 });

@@ -5,33 +5,402 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>shrt</title>
-    <meta name="description" content="shrt url short once">
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png" />
+    <meta name="description" content="shrt url short once" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/public/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/public/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/public/favicon-16x16.png"
+    />
     <link rel="manifest" href="/public/site.webmanifest" />
-    <link rel="shortcut icon" href="/public/favicon.ico">
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Federant&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <style>
+      /* normalize css */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      nav,
+      section,
+      summary {
+        display: block;
+      }
+      audio,
+      canvas,
+      video {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+      }
+      audio:not([controls]) {
+        display: none;
+        height: 0;
+      }
+      [hidden] {
+        display: none;
+      }
+      html {
+        font-size: 100%;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      html,
+      button,
+      input,
+      select,
+      textarea {
+        font-family: sans-serif;
+      }
+      body {
+        margin: 0;
+      }
+      a:focus {
+        outline: thin dotted;
+      }
+      a:active,
+      a:hover {
+        outline: 0;
+      }
+      h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+      h2 {
+        font-size: 1.5em;
+        margin: 0.83em 0;
+      }
+      h3 {
+        font-size: 1.17em;
+        margin: 1em 0;
+      }
+      h4 {
+        font-size: 1em;
+        margin: 1.33em 0;
+      }
+      h5 {
+        font-size: 0.83em;
+        margin: 1.67em 0;
+      }
+      h6 {
+        font-size: 0.75em;
+        margin: 2.33em 0;
+      }
+      abbr[title] {
+        border-bottom: 1px dotted;
+      }
+      b,
+      strong {
+        font-weight: bold;
+      }
+      blockquote {
+        margin: 1em 40px;
+      }
+      dfn {
+        font-style: italic;
+      }
+      mark {
+        background: #ff0;
+        color: #000;
+      }
+      p,
+      pre {
+        margin: 1em 0;
+      }
+      code,
+      kbd,
+      pre,
+      samp {
+        font-family: monospace, serif;
+        _font-family: "courier new", monospace;
+        font-size: 1em;
+      }
+      pre {
+        white-space: pre;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      q {
+        quotes: none;
+      }
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      small {
+        font-size: 80%;
+      }
+      sub,
+      sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+      }
+      sup {
+        top: -0.5em;
+      }
+      sub {
+        bottom: -0.25em;
+      }
+      dl,
+      menu,
+      ol,
+      ul {
+        margin: 1em 0;
+      }
+      dd {
+        margin: 0 0 0 40px;
+      }
+      menu,
+      ol,
+      ul {
+        padding: 0 0 0 40px;
+      }
+      nav ul,
+      nav ol {
+        list-style: none;
+        list-style-image: none;
+      }
+      img {
+        border: 0;
+        -ms-interpolation-mode: bicubic;
+      }
+      svg:not(:root) {
+        overflow: hidden;
+      }
+      figure {
+        margin: 0;
+      }
+      form {
+        margin: 0;
+      }
+      fieldset {
+        border: 1px solid silver;
+        margin: 0 2px;
+        padding: 0.35em 0.625em 0.75em;
+      }
+      legend {
+        border: 0;
+        padding: 0;
+        white-space: normal;
+        *margin-left: -7px;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font-size: 100%;
+        margin: 0;
+        vertical-align: baseline;
+        *vertical-align: middle;
+      }
+      button,
+      input {
+        line-height: normal;
+      }
+      button,
+      html input[type="button"],
+      input[type="reset"],
+      input[type="submit"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+        *overflow: visible;
+      }
+      button[disabled],
+      input[disabled] {
+        cursor: default;
+      }
+      input[type="checkbox"],
+      input[type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+        *height: 13px;
+        *width: 13px;
+      }
+      input[type="search"] {
+        -webkit-appearance: textfield;
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+      }
+      input[type="search"]::-webkit-search-cancel-button,
+      input[type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+      button::-moz-focus-inner,
+      input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+      textarea {
+        overflow: auto;
+        vertical-align: top;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      header {
+        width: 80%;
+        max-width: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #a55bf7;
+      }
+      main {
+        width: 50%;
+        max-width: 600px;
+      }
+      main h2 {
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      .section-input {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+      }
+      .section-input label {
+        font-family: inherit;
+        font-size: 1.5rem;
+        padding: 0.5rem 0rem;
+      }
+      .section-input input {
+        font-family: inherit;
+        padding: 1rem 0.5rem;
+        border: none;
+        border: 2px solid #528;
+        border-bottom: 4px solid #528;
+        text-align: center;
+        font-size: 1.5rem;
+        transition: border-bottom-color 0.3s ease-in-out;
+        caret-color: #528;
+        color: #528;
+      }
+      .form button[type="submit"] {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2rem;
+        border-radius: 2px;
+        border: 0;
+        font-weight: 500;
+        font-size: 1.5rem;
+        box-shadow: 3px 3px 1px #00ca9c;
+        background: #528;
+        color: white;
+      }
+      #short {
+        margin-top: 2rem;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        color: #528;
+      }
+      .btn {
+        padding: 6px 12px;
+        border-radius: 2px;
+        border: 0;
+        font-weight: 500;
+        font-size: 1.5rem;
+        box-shadow: 3px 3px 1px #00ca9c;
+        background: #528;
+        color: white;
+      }
+      #foo {
+        width: 100%;
+        height: 20px;
+        font-family: inherit;
+        padding: 1rem 0.5rem;
+        border: none;
+        border: 2px solid #528;
+        border-bottom: 4px solid #528;
+        text-align: center;
+        font-size: 1.5rem;
+        transition: border-bottom-color 0.3s ease-in-out;
+        caret-color: #528;
+        color: #528;
+        fill: #fff;
+      }
+      .btn img {
+        color: #fff;
+      }
+      .subtitle {
+        font-family: Federant;
+      }
+    </style>
+
     <header>
-      <h1>shrt</h1>
+      <figure>
+        <img
+          src="/public/logo.png"
+          alt="shrt logo"
+          width="387px"
+          height="128px"
+        />
+      </figure>
     </header>
     <main>
-      <h2></h2>
-      <div>
-        <h2>short url</h2>
-        <form>
-          <section>
-            <label for="id">url</label>
-            <input type="text" name="url" id="url" placeholder="url" />
-          </section>
-          <section>
-            <button type="submit">short</button>
-          </section>
-        </form>
-        <div id="short"></div>
-      </div>
+      <h2 class="subtitle">short url once</h2>
+      <form class="form">
+        <section class="section-input">
+          <label for="id">url</label>
+          <input type="url" name="url" id="url" placeholder="url" />
+        </section>
+        <section>
+          <button type="submit">short</button>
+        </section>
+      </form>
+      <section id="short" class="section-input">
+        <label for="short-url"
+          >short url
+          <input id="short-url" value="" readonly />
+        </label>
+        <button class="btn" data-clipboard-target="#foo">
+          <img src="/public/clippy.svg" alt="Copy to clipboard" width="20px" />
+        </button>
+      </section>
     </main>
   </body>
+  <script src="/public/clipboard.min.js"></script>
   <script src="/public/script.js"></script>
 </html>
