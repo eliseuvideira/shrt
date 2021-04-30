@@ -1,0 +1,23 @@
+<form class="form">
+  <section class="group">
+    <label class="label" for="id">url</label>
+    <input class="input" type="url" name="url" id="url" placeholder="url" />
+    <button class="button" type="submit">short</button>
+  </section>
+  <hr />
+  <section class="group">
+    <label class="label" for="short-url">short url </label>
+    <section class="clipboard">
+      <input class="input" id="short-url" value="" readonly />
+      <button
+        id="copy-to-clipboard"
+        class="button"
+        type="button"
+        value="Copy"
+        aria-label="Copy to clipboard"
+      >
+        <i class="fa fa-clipboard" alt="Copy to clipboard"></i>
+      </button>
+    </section>
+  </section>
+</form>

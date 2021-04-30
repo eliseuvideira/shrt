@@ -1,0 +1,36 @@
+<script>
+  /* eslint-disable */
+  window.addEventListener("load", () => {
+    const formEl = document.querySelector(".form");
+    const urlEl = document.querySelector("#url");
+    const shortUrlEl = document.querySelector("#short-url");
+    const copyEl = document.querySelector("#copy-to-clipboard");
+
+    formEl.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({ url: urlEl.value }),
+      });
+
+      const data = await response.json();
+
+      shortUrlEl.value = data.url;
+    });
+
+    const copyToClipboard = () => {
+      console.log("here");
+      shortUrlEl.select();
+      document.execCommand("copy");
+    };
+
+    shortUrlEl.addEventListener("click", copyToClipboard);
+
+    copyEl.addEventListener("click", copyToClipboard);
+  });
+</script>

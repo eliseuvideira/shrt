@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>shrt - not found</title>
-    <meta name="description" content="shrt url short once">
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png" />
-    <link rel="manifest" href="/public/site.webmanifest" />
-    <link rel="shortcut icon" href="/public/favicon.ico">
+    <title>shrt</title>
+    <%- include("../components/head") %>
   </head>
   <body>
+    <!---->
+    <%- include("../components/normalize") %>
+    <!---->
+    <%- include("../components/styles") %>
+    <!---->
+
     <header>
-      <h1>shrt</h1>
+      <h2>😢 link not found 😢</h2>
+      <p>There's probably typo on the url</p>
+      <hr />
+      <!---->
+      <%- include("../components/header") %>
+      <!---->
     </header>
     <main>
-      <h2>🚫 not found 🚫</h2>
-      <div>
-        <h2>short url</h2>
-        <form>
-          <section>
-            <label for="id">url</label>
-            <input type="text" name="url" id="url" placeholder="url" />
-          </section>
-          <section>
-            <button type="submit">short</button>
-          </section>
-        </form>
-        <div id="short"></div>
-      </div>
+      <!---->
+      <%- include("../components/form") %>
+      <!---->
     </main>
-    <script src="/public/script.js"></script>
   </body>
+  <!---->
+  <%- include("../components/script") %>
+  <!---->
 </html>
